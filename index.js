@@ -1,6 +1,6 @@
 const inquirer = require('inquirer');
-//import
-const {Circle} =require('./lib/shapes.js');
+//import shapes
+const {Circle, Square, Triangle} =require('./lib/shapes.js');
 
 inquirer
     .prompt([
@@ -34,11 +34,11 @@ inquirer
         // this is an instantiation of the circle class in shapes.js
         const circleInstance = new Circle()
         
-        // NEED logic for shape conditions 
+        // NEED logic for shape conditions (if/else...)
 
         //invoke the methods from shape class
-        circleInstance.text = response.text;
-        circleInstance.color = response.color;
+        circleInstance.setText(response.text);
+        circleInstance.setColor(response.color);
         
         //invoke SVG logic into terminal (BUT REALLY WE NEED TO TRANSCRIBE IT INTO SVG FILE using WRITEFILE)
         const circleSVG = circleInstance.render()
