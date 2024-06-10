@@ -1,7 +1,9 @@
 const inquirer = require('inquirer');
-//import shapes
-const {Circle, Square, Triangle} =require('./lib/shapes.js');
 
+//import shapes
+const { Circle, Square, Triangle } = require('./lib/shapes.js');
+
+//this will prompt questions on the terminal to determine personal logo style
 inquirer
     .prompt([
         {
@@ -31,19 +33,30 @@ inquirer
         }
     ])
     .then((response) => {
-        // this is an instantiation of the circle class in shapes.js
-        const circleInstance = new Circle()
-        
-        // NEED logic for shape conditions (if/else...)
+        // this is an instantiation of the newLogo based on responses from terminal 
+        let newShape;
+            switch (response.shapes) {
+                case "circle":
+                    newShape = new Circle();
+                    break;
+                case "square":
+                    newShape = new Square();
+                    break;
+                case "triangle":
+                    newShape = new Triangle();
+                    break;
+        }
+        // NEED logic for shape conditions (if/else...OR SWITCH when deciding between circle/square/triangle)
 
         //invoke the methods from shape class
-        circleInstance.setText(response.text);
-        circleInstance.setColor(response.color);
-        
+        newShape.setText(response.text);
+        newShape.setColor(response.color);
+        newShape.setTextColor(response.textColor);
+
         //invoke SVG logic into terminal (BUT REALLY WE NEED TO TRANSCRIBE IT INTO SVG FILE using WRITEFILE)
-        const circleSVG = circleInstance.render()
-        console.log(circleSVG);
+        const renderedShape = newShape.render()
+        console.log(renderedShape);
     })
     .catch((error) => {
         console.log(error)
-    })
+    });
