@@ -58,7 +58,7 @@ inquirer
         console.log(renderedShape);
     
         // invoke SVG logic into a text file
-        return fs.writeFile('renderedShape.svg', renderedShape, (err) => {
+        return fs.writeFile('logo.svg', renderedShape, (err) => {
             if (err) {
                 console.error(err);
                 return;
