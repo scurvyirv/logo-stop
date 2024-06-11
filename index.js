@@ -24,8 +24,16 @@ inquirer
         },
         {
             type: "input",
-            message: "what three characters would you like to use?",
+            message: "what characters would you like to use? (max of three characters)",
             name: "text",
+            //this will take a callback function
+            validate: (response) => {
+                if(response.length <= 3 && response.length > 0) {
+                    return true
+                } else {
+                    return `you must have 1-3 characters`
+                }
+            }
         },
         {
             type: "input",
